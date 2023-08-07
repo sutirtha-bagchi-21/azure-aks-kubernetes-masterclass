@@ -3,11 +3,11 @@ kind: Pod # String
 metadata: # Dictionary
   name: myapp-pod
   labels: # Dictionary
-    app: myapp  # Key value paids
+    app: myapp # Key value paids
 spec:
   containers: # List
     - name: myapp
-      image: stacksimplify/kubenginx:1.0.0
+      image: sutirthabagchi21/mynginx_image1:v2-release
       ports: 
         - containerPort: 80
 
