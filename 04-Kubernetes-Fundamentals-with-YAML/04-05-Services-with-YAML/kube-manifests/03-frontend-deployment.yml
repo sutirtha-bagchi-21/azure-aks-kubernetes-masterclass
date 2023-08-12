@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment 
 metadata:
-  name: frontend-nginxapp
+  name: frontend-nginxapp-getip
   labels:
-    app: frontend-nginxapp
+    app: frontend-nginxapp-getip
     tier: frontend
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: frontend-nginxapp
+      app: frontend-nginxapp-getip
   template: 
     metadata:
       labels: 
-        app: frontend-nginxapp
+        app: frontend-nginxapp-getip
         tier: frontend
     spec: 
       containers: 
-        - name: frontend-nginxapp
+        - name: frontend-nginxapp-getip
           image: sutirthabagchi21/kube-frontend-nginx:v1-release
           ports:
             - containerPort: 80

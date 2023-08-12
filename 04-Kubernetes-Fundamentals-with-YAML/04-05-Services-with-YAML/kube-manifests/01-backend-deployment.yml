@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-restapp
+  name: backend-restapp-getip
   labels:
-    app: backend-restapp
+    app: backend-restapp-getip
     tier: backend 
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: backend-restapp
+      app: backend-restapp-getip
   template:
     metadata:
       labels:
-        app: backend-restapp
+        app: backend-restapp-getip
         tier: backend 
     spec: 
       containers:
-        - name: backend-restapp
-          image: sutirthabagchi21/kube-frontend-nginx:tagname
+        - name: backend-restapp-getip
+          image: sutirthabagchi21/helloworld:v2-release
           ports:
             - containerPort: 8080        

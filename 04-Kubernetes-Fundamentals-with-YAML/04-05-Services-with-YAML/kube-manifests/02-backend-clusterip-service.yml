@@ -3,12 +3,12 @@ kind: Service
 metadata:
   name: my-backend-service ## VERY VERY IMPORTANT - NGINX PROXYPASS needs this name
   labels:
-    app: backend-restapp
+    app: backend-restapp-getip
     tier: backend   
 spec:
   #type: ClusterIP is a default service in k8s
   selector:
-    app: backend-restapp
+    app: backend-restapp-getip
   ports:
     - name: http
       port: 8080 # ClusterIP Service Port
