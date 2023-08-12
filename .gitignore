@@ -13,3 +13,23 @@
 *.tfstate
 *.tfstate.backup
 *.tfvars
+helloworld/helloworld/.gitignore
+helloworld/helloworld/Dockerfile
+helloworld/helloworld/mvnw
+helloworld/helloworld/mvnw.cmd
+helloworld/helloworld/pom.xml
+helloworld/helloworld/.mvn/wrapper/maven-wrapper.jar
+helloworld/helloworld/.mvn/wrapper/maven-wrapper.properties
+helloworld/helloworld/src/main/java/com/sutirthaspringapp/helloworld/HelloworldApplication.java
+helloworld/helloworld/src/main/java/com/sutirthaspringapp/helloworld/HelloWorldController.java
+helloworld/helloworld/src/main/java/com/sutirthaspringapp/helloworld/serverinfo/ServerInformationService.java
+helloworld/helloworld/src/main/resources/application.properties
+helloworld/helloworld/src/test/java/com/sutirthaspringapp/helloworld/HelloworldApplicationTests.java
+KB/ACR - Microservices Best Practices.pptx
+KB/AKS Best Practices Deck.pdf
+KB/AKS Best Practices Deck.pptx
+KB/AKS Rapid Assessment Pitch Deck.pptx
+KB/AKS-upgrade-best practices.pptx
+nginxfrontend/default.conf
+nginxfrontend/Dockerfile
+.gitignore
