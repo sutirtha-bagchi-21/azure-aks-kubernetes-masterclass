@@ -6,7 +6,7 @@ metadata:
     app: backend-restapp-getip
     tier: backend 
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: backend-restapp-getip
@@ -18,6 +18,6 @@ spec:
     spec: 
       containers:
         - name: backend-restapp-getip
-          image: sutirthabagchi21/helloworld:v2-release
+          image: sutirthabagchi21/helloworld:v4-release
           ports:
-            - containerPort: 8080        
+            - containerPort: 8080      

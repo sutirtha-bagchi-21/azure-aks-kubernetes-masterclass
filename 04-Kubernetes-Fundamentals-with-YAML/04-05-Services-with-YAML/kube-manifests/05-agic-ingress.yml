@@ -20,12 +20,12 @@ spec:
         - name: backend-restapp-getip
           image: sutirthabagchi21/helloworld:v2-release
           ports:
-            - containerPort: 80
+            - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-restapp-getip-service ## VERY VERY IMPORTANT - NGINX PROXYPASS needs this name
+  name: my-backend-service ## VERY VERY IMPORTANT - NGINX PROXYPASS needs this name
 spec:
   #type: ClusterIP is a default service in k8s
   selector:
@@ -33,13 +33,53 @@ spec:
   ports:
   - protocol: TCP
     port: 8080
-    targetPort: 80
+    targetPort: 8080
+---
+
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: frontend-nginxapp-getip
+  labels:
+    app: frontend-nginxapp-getip
+    tier: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-nginxapp-getip
+  template: 
+    metadata:
+      labels: 
+        app: frontend-nginxapp-getip
+        tier: frontend
+    spec: 
+      containers: 
+        - name: frontend-nginxapp-getip
+          image: sutirthabagchi21/kube-frontend-nginx:v1-release
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service 
+metadata:
+  name: frontend-nginxapp-getip-service
+  labels:
+    app: frontend-nginxapp-getip
+    tier: frontend  
+spec:
+  selector:
+    app: frontend-nginxapp-getip
+  ports: 
+    - name: http
+      port: 80 # Service Port
+      targetPort: 80 # Container Port
 ---
 
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: backend-restapp-getip-ingress
+  name: nginxapp-getip-ingress
   annotations:
     kubernetes.io/ingress.class: azure/application-gateway
 spec:
@@ -49,7 +89,7 @@ spec:
       - path: /
         backend:
           service:
-            name: my-backend-service
+            name: frontend-nginxapp-getip-service
             port:
-              number: 8080
+              number: 80
         pathType: Exact
